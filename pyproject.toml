@@ -1,10 +1,34 @@
 [project]
 name = "spotify-playlist-snapshot"
-version = "0.1.0"
-description = "Add your description here"
+version = "0.2.0"
+description = "Fetch all playlists information of a Spotify user and save it to a SQLite database"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.12"
 dependencies = [
+    "aiohttp>=3.9",
+    "colorama>=0.4.6",
     "pyaml>=25.7.0",
     "spotipy>=2.25.2",
 ]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+]
+
+[project.scripts]
+spotify-playlist-snapshot = "spotify_playlist_snapshot.snapshot:main"
+snapshot = "spotify_playlist_snapshot.snapshot:main"
+main = "spotify_playlist_snapshot.snapshot:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/spotify_playlist_snapshot"]
+
+[tool.pytest.ini_options]
+testpaths = ["tst"]
+asyncio_mode = "auto"

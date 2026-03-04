@@ -1,5 +1,8 @@
 client_id: <client_id>
 secret: <secret_token>
+# OAuth redirect URI — must match what's configured in your Spotify Developer Dashboard.
+# Defaults to http://127.0.0.1:8000 if omitted.
+# redirect_uri: http://127.0.0.1:8000
 # If playlists given, only these will be fetched. If omitted all user playlists will be fetched.
 playlists:
   # playlist1
